@@ -1,0 +1,99 @@
+{
+  "inventory": [
+    {
+      "mode": "0644",
+      "path": ".env.example",
+      "sha256": "a678378d8187e2034314c3d567e49138e3483b68a1e536203246af89195d6020",
+      "size": 15186
+    },
+    {
+      "mode": "0644",
+      "path": ".gitignore",
+      "sha256": "ab08a241eca8bca77150cc9a3fc67d8ef7781bb5e45a97b493cd24c33220febc",
+      "size": 4830
+    },
+    {
+      "mode": "0644",
+      "path": "GENERATED_SOURCE.md",
+      "sha256": "279e0bd8e812eedad4ab2ed0c33733947cc9dd60ccf6bf4e6223f4bca296c962",
+      "size": 571
+    },
+    {
+      "mode": "0644",
+      "path": "LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "size": 11358
+    },
+    {
+      "mode": "0644",
+      "path": "README.md",
+      "sha256": "513f93987042e2949d23c4fd1c6bccfa91fe80cf8007b4216494bdef4d8e2769",
+      "size": 22161
+    },
+    {
+      "mode": "0644",
+      "path": "caddy/Caddyfile",
+      "sha256": "7375a7e0c1bf4d10a83603668e851a912a997402e9c66cf8770bd68e7d77138e",
+      "size": 2974
+    },
+    {
+      "mode": "0644",
+      "path": "caddy/Dockerfile",
+      "sha256": "79b24ffe748625870110f7383a0e2cd25e8b485ebddfeb3ce63dbbc9f79fbf8b",
+      "size": 303
+    },
+    {
+      "mode": "0644",
+      "path": "docker-compose.yml",
+      "sha256": "6db4e03535caebc7de5f1a5437bdeb0791a9316419088e95f95de5bc08d6a208",
+      "size": 4803
+    },
+    {
+      "mode": "0644",
+      "path": "download_staging_certs.sh",
+      "sha256": "40e64196512424ff59bb288455356bf77bea63dadc91e14124ba3b647bb5f13e",
+      "size": 4029
+    },
+    {
+      "mode": "0644",
+      "path": "junjo_app/Dockerfile",
+      "sha256": "a3fc7b4ab56690a6dc5383ff28e1c71966b59b91b45ac5875912eacf25ae06ab",
+      "size": 694
+    },
+    {
+      "mode": "0644",
+      "path": "junjo_app/main.py",
+      "sha256": "73f69a4f12acf302fe808f25f3472c95a186e48cfac8fc3a2bdbf89f5baf0a28",
+      "size": 2806
+    },
+    {
+      "mode": "0644",
+      "path": "junjo_app/otel_config.py",
+      "sha256": "438f496818c212ed3c943a121a799878d0eaf9c39cd0bf81229eb98cdf503fb1",
+      "size": 3451
+    },
+    {
+      "mode": "0644",
+      "path": "junjo_app/requirements.txt",
+      "sha256": "e8ff9ce57744882ca252998f961258691336b1e4fbfc4c68d3fb65a616796f65",
+      "size": 35
+    },
+    {
+      "mode": "0755",
+      "path": "scripts/junjo",
+      "sha256": "2263155f44df4a01d8fdaa75d0e0becbe3c6d6ed79aac7545e9609e71617b836",
+      "size": 18711
+    }
+  ],
+  "schema_version": 1,
+  "source": {
+    "canonical_source_path": "apps/studio/deployments/vm-caddy",
+    "compatible_sdk_version": "0.63.0",
+    "distribution": "vm-caddy",
+    "schema_version": 1,
+    "source_repository": "https://github.com/mdrideout/junjo",
+    "source_revision": "ed39c7708e8f9c24f20eaef29211ab36ef3ba0be",
+    "studio_version": "0.81.2"
+  },
+  "tree_sha256": "7d25ef57411ad5a377d81ae65efb02c57af25eab9d346ef8a68d751cae0171c3"
+}
