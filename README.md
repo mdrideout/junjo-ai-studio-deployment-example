@@ -4,14 +4,13 @@
 > [`apps/studio/deployments/vm-caddy`](https://github.com/mdrideout/junjo/tree/master/apps/studio/deployments/vm-caddy)
 > in the Junjo platform monorepo. The standalone
 > [`junjo-ai-studio-deployment-example`](https://github.com/mdrideout/junjo-ai-studio-deployment-example)
-> repository is the designated release mirror for convenient cloning. Its
-> first monorepo-driven refresh remains a cutover gate. Submit changes to the
-> canonical source; direct mirror changes will be overwritten after that
-> publication path is active.
+> repository is the generated release mirror for convenient cloning. Submit
+> changes to the canonical source; direct mirror changes are overwritten by
+> the release publication workflow.
 
 This is a production deployment example of Junjo AI Studio, a Junjo python SDK powered app, and Caddy reverse proxy to a fresh virtual machine.
 
-This deployment pins Junjo AI Studio `0.81.5` and Junjo `0.63.0` as a compatible release pair.
+This deployment pins Junjo AI Studio `0.82.0` and Junjo `0.65.0` as a compatible release pair.
 
 Learn how to go from a fresh virtual machine to a production deployment that supports an unlimited number of users and junjo apps. 
 
@@ -96,9 +95,9 @@ Choose a setup path:
    cp .env.example .env
    ```
 
-Generate and set TWO required security keys:
+Generate and set three required security keys:
 
-Both `JUNJO_SESSION_SECRET` and `JUNJO_SECURE_COOKIE_KEY` must be set for the backend to function properly.
+`JUNJO_SESSION_SECRET`, `JUNJO_SECURE_COOKIE_KEY`, and `JUNJO_INTERNAL_GRPC_TOKEN` must be set for the backend and ingestion service to function properly.
 
 1. Generate the first key:
    ```bash
@@ -113,6 +112,8 @@ Both `JUNJO_SESSION_SECRET` and `JUNJO_SECURE_COOKIE_KEY` must be set for the ba
    ```
 
 4. Replace `your_base64_key_here` in `JUNJO_SECURE_COOKIE_KEY` with this second generated key
+
+5. Generate a third key and replace `your_internal_grpc_token_here` in `JUNJO_INTERNAL_GRPC_TOKEN` with it
 
 For production deployments, also set these values in `.env`:
 - `JUNJO_ENV=production`
@@ -336,9 +337,10 @@ cd <project-folder-name>
 # Copy the example environment file
 cp .env.example .env
 
-# Generate TWO security keys (run twice and use different values)
+# Generate three security keys and use different values
 openssl rand -base64 32  # JUNJO_SESSION_SECRET
 openssl rand -base64 32  # JUNJO_SECURE_COOKIE_KEY
+openssl rand -base64 32  # JUNJO_INTERNAL_GRPC_TOKEN
 
 # Edit .env and set production values:
 # - JUNJO_ENV=production
@@ -347,6 +349,7 @@ openssl rand -base64 32  # JUNJO_SECURE_COOKIE_KEY
 # - JUNJO_PROD_INGESTION_URL=https://ingestion.junjo.example.com
 # - JUNJO_SESSION_SECRET=<generated_key_1>
 # - JUNJO_SECURE_COOKIE_KEY=<generated_key_2>
+# - JUNJO_INTERNAL_GRPC_TOKEN=<generated_key_3>
 # - CLOUDFLARE_API_TOKEN=<required_for_caddy_dns_challenge>
 vi .env
 ```
@@ -480,18 +483,18 @@ This deployment includes several interconnected services. The **core Junjo AI St
 ### Core Junjo AI Studio Services
 
 #### `junjo-ai-studio-ingestion`
-*   **Image**: `mdrideout/junjo-ai-studio-ingestion:0.81.5`
+*   **Image**: `mdrideout/junjo-ai-studio-ingestion:0.82.0`
 *   **Purpose**: High-throughput OpenTelemetry data ingestion
 *   **Details**: Rust service that receives telemetry via OTLP gRPC (port 26155), writes spans to Arrow IPC WAL segments, and flushes spans to Parquet for durable cold storage. It also prepares a hot snapshot parquet file for low-latency recent queries.
 *   **Health Check**: Docker health check verifies the internal gRPC port (`50052`) is listening.
 
 #### `junjo-ai-studio-backend`
-*   **Image**: `mdrideout/junjo-ai-studio-backend:0.81.5`
+*   **Image**: `mdrideout/junjo-ai-studio-backend:0.82.0`
 *   **Purpose**: API server, authentication, and data processing
 *   **Details**: Python FastAPI application that handles HTTP API requests (port 26154), user authentication, and business logic. Uses SQLite for users/sessions plus metadata indexing, and queries parquet-backed span data with hot+cold merge logic.
 
 #### `junjo-ai-studio-frontend`
-*   **Image**: `mdrideout/junjo-ai-studio-frontend:0.81.5`
+*   **Image**: `mdrideout/junjo-ai-studio-frontend:0.82.0`
 *   **Purpose**: Web-based debugging interface
 *   **Details**: React application providing the UI for viewing workflow runs, exploring traces, and analyzing AI agent behavior. Served on port 26153, proxied through Caddy.
 

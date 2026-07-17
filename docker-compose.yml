@@ -15,12 +15,14 @@ services:
       - junjo-network
     env_file:
       - .env
+    environment:
+      - JUNJO_INTERNAL_GRPC_TOKEN=
     depends_on:
       - junjo-ai-studio-ingestion
 
   # Junjo AI Studio Services
   junjo-ai-studio-backend:
-    image: mdrideout/junjo-ai-studio-backend:0.81.5
+    image: mdrideout/junjo-ai-studio-backend:0.82.0
     restart: unless-stopped
     # Memory guardrails (tuned for small VMs; override in .env as needed)
     mem_reservation: ${JUNJO_BACKEND_MEM_RESERVATION:-300m}
@@ -61,7 +63,7 @@ services:
       - JUNJO_DF_SPILL_PATH=${JUNJO_DF_SPILL_PATH:-/tmp/junjo-datafusion-spill}
 
   junjo-ai-studio-ingestion:
-    image: mdrideout/junjo-ai-studio-ingestion:0.81.5
+    image: mdrideout/junjo-ai-studio-ingestion:0.82.0
     restart: unless-stopped
     volumes:
       # Database storage (required for all modes)
@@ -77,6 +79,11 @@ services:
       - BACKEND_GRPC_PORT=50053
       - GRPC_PORT=26155
       - INTERNAL_GRPC_PORT=50052
+      - JUNJO_API_KEY_CACHE_TTL_SECONDS=${JUNJO_API_KEY_CACHE_TTL_SECONDS:-10}
+      - JUNJO_API_KEY_CACHE_MAX_ENTRIES=${JUNJO_API_KEY_CACHE_MAX_ENTRIES:-1024}
+      - JUNJO_API_KEY_VALIDATION_MAX_CONCURRENCY=${JUNJO_API_KEY_VALIDATION_MAX_CONCURRENCY:-8}
+      - JUNJO_API_KEY_VALIDATION_MAX_PENDING=${JUNJO_API_KEY_VALIDATION_MAX_PENDING:-32}
+      - JUNJO_API_KEY_VALIDATION_TIMEOUT_MS=${JUNJO_API_KEY_VALIDATION_TIMEOUT_MS:-2000}
       # Data paths (hardcoded for Docker, users configure host mount via JUNJO_HOST_DB_DATA_PATH)
       - WAL_DIR=/app/.dbdata/spans/wal
       - SNAPSHOT_PATH=/app/.dbdata/spans/hot_snapshot.parquet
@@ -92,12 +99,14 @@ services:
       start_period: 30s
 
   junjo-ai-studio-frontend:
-    image: mdrideout/junjo-ai-studio-frontend:0.81.5
+    image: mdrideout/junjo-ai-studio-frontend:0.82.0
     restart: unless-stopped
     ports:
       - "${JUNJO_FRONTEND_HOST_PORT:-26153}:26153" # Production web UI
     env_file:
       - .env
+    environment:
+      - JUNJO_INTERNAL_GRPC_TOKEN=
     networks:
       - junjo-network
     depends_on:
@@ -111,6 +120,8 @@ services:
     restart: unless-stopped
     env_file:
       - .env
+    environment:
+      - JUNJO_INTERNAL_GRPC_TOKEN=
     ports:
       - "80:80" # For HTTP -> HTTPS redirect
       - "443:443" # For HTTPS
