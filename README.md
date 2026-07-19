@@ -10,7 +10,7 @@
 
 This is a production deployment example of Junjo AI Studio, a Junjo python SDK powered app, and Caddy reverse proxy to a fresh virtual machine.
 
-This deployment pins Junjo AI Studio `0.82.0` and Junjo `0.65.0` as a compatible release pair.
+This deployment pins Junjo AI Studio `0.82.1` and Junjo `0.66.0` as a compatible release pair.
 
 Learn how to go from a fresh virtual machine to a production deployment that supports an unlimited number of users and junjo apps. 
 
@@ -41,7 +41,7 @@ Learn how to go from a fresh virtual machine to a production deployment that sup
 
 ## Overview
 
-Deploy Junjo AI Studio as a centralized observability backend for your AI applications. Once deployed, your Python applications can send OpenTelemetry data to Junjo AI Studio using the `JunjoOtelExporter`, giving you:
+Deploy Junjo AI Studio as a centralized observability backend for your AI applications. Once deployed, your Python applications can send standard OpenTelemetry trace data to Junjo AI Studio, giving you:
 
 - **Complete workflow visibility**: See every step your LLM takes in a sequence of events
 - **Decision transparency**: Understand what data your AI is using to make decisions
@@ -234,20 +234,22 @@ Using `junjo.example.com` as an example, your deployment will be accessible at:
 |---------|-----|---------|
 | **Web UI** | `https://junjo.example.com` | View and debug AI workflow executions |
 | **API** | `https://api.junjo.example.com` | Backend HTTP API |
-| **Ingestion** | `ingestion.junjo.example.com:443` | **Your AI applications send telemetry here** |
+| **Ingestion** | `ingestion.junjo.example.com:443` | **Your AI applications send traces here** |
 
 #### Connecting Your AI Applications
 
-Configure your Python applications to send OpenTelemetry data to the ingestion endpoint:
+Configure your Python applications to send OpenTelemetry traces to the ingestion
+endpoint. Studio does not currently accept OTLP metrics, so configure only an
+OTLP trace exporter and span processor.
 
 ```python
-from junjo.telemetry.junjo_otel_exporter import JunjoOtelExporter
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
 
-junjo_exporter = JunjoOtelExporter(
-    host="ingestion.junjo.example.com",  # Your production ingestion domain
-    port="443",                            # HTTPS port (Caddy handles SSL)
-    api_key="your_api_key",               # Created in Junjo AI Studio UI
-    insecure=False,                        # Use SSL in production
+studio_exporter = OTLPSpanExporter(
+    endpoint="ingestion.junjo.example.com:443",
+    headers=(("x-junjo-api-key", "your_api_key"),),
+    insecure=False,
+    timeout=120,
 )
 ```
 
@@ -483,18 +485,18 @@ This deployment includes several interconnected services. The **core Junjo AI St
 ### Core Junjo AI Studio Services
 
 #### `junjo-ai-studio-ingestion`
-*   **Image**: `mdrideout/junjo-ai-studio-ingestion:0.82.0`
-*   **Purpose**: High-throughput OpenTelemetry data ingestion
-*   **Details**: Rust service that receives telemetry via OTLP gRPC (port 26155), writes spans to Arrow IPC WAL segments, and flushes spans to Parquet for durable cold storage. It also prepares a hot snapshot parquet file for low-latency recent queries.
+*   **Image**: `mdrideout/junjo-ai-studio-ingestion:0.82.1`
+*   **Purpose**: High-throughput OpenTelemetry trace ingestion
+*   **Details**: Rust service that receives trace telemetry via OTLP gRPC (port 26155), writes spans to Arrow IPC WAL segments, and flushes spans to Parquet for durable cold storage. It also prepares a hot snapshot parquet file for low-latency recent queries.
 *   **Health Check**: Docker health check verifies the internal gRPC port (`50052`) is listening.
 
 #### `junjo-ai-studio-backend`
-*   **Image**: `mdrideout/junjo-ai-studio-backend:0.82.0`
+*   **Image**: `mdrideout/junjo-ai-studio-backend:0.82.1`
 *   **Purpose**: API server, authentication, and data processing
 *   **Details**: Python FastAPI application that handles HTTP API requests (port 26154), user authentication, and business logic. Uses SQLite for users/sessions plus metadata indexing, and queries parquet-backed span data with hot+cold merge logic.
 
 #### `junjo-ai-studio-frontend`
-*   **Image**: `mdrideout/junjo-ai-studio-frontend:0.82.0`
+*   **Image**: `mdrideout/junjo-ai-studio-frontend:0.82.1`
 *   **Purpose**: Web-based debugging interface
 *   **Details**: React application providing the UI for viewing workflow runs, exploring traces, and analyzing AI agent behavior. Served on port 26153, proxied through Caddy.
 
@@ -516,7 +518,7 @@ This deployment includes several interconnected services. The **core Junjo AI St
 - Executes a workflow that increments a counter
 - Sends complete trace data to `junjo-ai-studio-ingestion` via gRPC
 - Creates visible workflow runs in the Junjo AI Studio UI every 5 seconds
-- Shows how to configure `JunjoOtelExporter` in your own applications
+- Shows how to configure standard OTLP trace export in your own applications
 - Watch it running: `docker compose logs -f junjo-app`
 
 **For Production:**

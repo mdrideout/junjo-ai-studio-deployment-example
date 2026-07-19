@@ -3,8 +3,8 @@
     {
       "mode": "0644",
       "path": ".env.example",
-      "sha256": "9bcc976d8a24585868f909cf6342a5904720b935447217ff0c2165c765963f66",
-      "size": 16654
+      "sha256": "7ef266d7d23fa00a3a31f5457cd1b950eccd82fd4b7fc1afd09e28c83feadea3",
+      "size": 16647
     },
     {
       "mode": "0644",
@@ -15,7 +15,7 @@
     {
       "mode": "0644",
       "path": "GENERATED_SOURCE.md",
-      "sha256": "868676ed185bf80a67364891ff166bf54ddbc8fe4f34356b46803d788152107a",
+      "sha256": "33e3ce2c58b604ef9288ed0d98f4df4c75dbf834bbee7c8661b872f342876bfc",
       "size": 571
     },
     {
@@ -27,8 +27,8 @@
     {
       "mode": "0644",
       "path": "README.md",
-      "sha256": "7fe97cc6151580a8d16fc6983b96cb44ddbc1b93519165bd5d577b548f76dfe3",
-      "size": 22342
+      "sha256": "c8d0ce5a3c9fbe7640eca82bfd87645804181ded1c2749405959336517e715e0",
+      "size": 22309
     },
     {
       "mode": "0644",
@@ -45,7 +45,7 @@
     {
       "mode": "0644",
       "path": "docker-compose.yml",
-      "sha256": "20947a0babab4fc268c485cb304d02cf9ec40e1d1e3880e803966462bcad369b",
+      "sha256": "bc92ea1174eda046321953ed7ee2f59066625b2371dfe9daa6d04a41e9db4d43",
       "size": 5393
     },
     {
@@ -63,20 +63,20 @@
     {
       "mode": "0644",
       "path": "junjo_app/main.py",
-      "sha256": "73f69a4f12acf302fe808f25f3472c95a186e48cfac8fc3a2bdbf89f5baf0a28",
-      "size": 2806
+      "sha256": "8c3dc860139929b8940c84ca93f3f358c50a6a82f05039b7d2cc78907efc79b1",
+      "size": 2701
     },
     {
       "mode": "0644",
       "path": "junjo_app/otel_config.py",
-      "sha256": "438f496818c212ed3c943a121a799878d0eaf9c39cd0bf81229eb98cdf503fb1",
-      "size": 3451
+      "sha256": "4df1eac45917cfe4a245cab3cb49baff1ec0472944e0f83b8fd914a1aa0bcb90",
+      "size": 2885
     },
     {
       "mode": "0644",
       "path": "junjo_app/requirements.txt",
-      "sha256": "5d3a4ade0cd484fedcf2b496337084e818115fa98f159e9ef432f64e9d9d7ed4",
-      "size": 35
+      "sha256": "19e3d6446801aa38e9ccab19222c5dca3bf0e39d35785b28edafa0a60314a1ae",
+      "size": 108
     },
     {
       "mode": "0755",
@@ -88,12 +88,12 @@
   "schema_version": 1,
   "source": {
     "canonical_source_path": "apps/studio/deployments/vm-caddy",
-    "compatible_sdk_version": "0.65.0",
+    "compatible_sdk_version": "0.66.0",
     "distribution": "vm-caddy",
     "schema_version": 1,
     "source_repository": "https://github.com/mdrideout/junjo",
-    "source_revision": "6f516ca6060d98442321dfd236dca4713b8de103",
-    "studio_version": "0.82.0"
+    "source_revision": "b852bbbfc641883bbfb16782e5bf62f2173d050c",
+    "studio_version": "0.82.1"
   },
-  "tree_sha256": "e6a5eef596973ab2491a5987155afbc690473de986bcd5666e4a704007f5191d"
+  "tree_sha256": "1a208a4569c222fe1ca6fa60bb82b275975c2815fdbe469fbe8f098051a8cdb4"
 }
