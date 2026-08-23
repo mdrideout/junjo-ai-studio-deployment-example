@@ -3,8 +3,8 @@
     {
       "mode": "0644",
       "path": ".env.example",
-      "sha256": "7ef266d7d23fa00a3a31f5457cd1b950eccd82fd4b7fc1afd09e28c83feadea3",
-      "size": 16647
+      "sha256": "58c42b933f85fd635ed449a9ace5cf7363c21ea62604674b8294c35d06d60229",
+      "size": 16039
     },
     {
       "mode": "0644",
@@ -15,7 +15,7 @@
     {
       "mode": "0644",
       "path": "GENERATED_SOURCE.md",
-      "sha256": "33e3ce2c58b604ef9288ed0d98f4df4c75dbf834bbee7c8661b872f342876bfc",
+      "sha256": "5c51a515dbea0e2bf2ec5eae0c2568db516abce6288f77736ca6defe7e7f2817",
       "size": 571
     },
     {
@@ -27,8 +27,8 @@
     {
       "mode": "0644",
       "path": "README.md",
-      "sha256": "c8d0ce5a3c9fbe7640eca82bfd87645804181ded1c2749405959336517e715e0",
-      "size": 22309
+      "sha256": "a923f4ec2ff1b492a839cccdc8129093114808f7118c2bdb142096303e055753",
+      "size": 22665
     },
     {
       "mode": "0644",
@@ -45,7 +45,7 @@
     {
       "mode": "0644",
       "path": "docker-compose.yml",
-      "sha256": "bc92ea1174eda046321953ed7ee2f59066625b2371dfe9daa6d04a41e9db4d43",
+      "sha256": "53eb502aeb983adc88ab038d1f649593f48076ecc69d5ca732f114d317610221",
       "size": 5393
     },
     {
@@ -75,7 +75,7 @@
     {
       "mode": "0644",
       "path": "junjo_app/requirements.txt",
-      "sha256": "19e3d6446801aa38e9ccab19222c5dca3bf0e39d35785b28edafa0a60314a1ae",
+      "sha256": "2a5a82a7fff576e5994f8543b978ea5a2688892f5623816d60c58892d31497c7",
       "size": 108
     },
     {
@@ -88,12 +88,12 @@
   "schema_version": 1,
   "source": {
     "canonical_source_path": "apps/studio/deployments/vm-caddy",
-    "compatible_sdk_version": "0.66.0",
+    "compatible_sdk_version": "0.67.0",
     "distribution": "vm-caddy",
     "schema_version": 1,
     "source_repository": "https://github.com/mdrideout/junjo",
-    "source_revision": "b852bbbfc641883bbfb16782e5bf62f2173d050c",
-    "studio_version": "0.82.1"
+    "source_revision": "9d0b0ee0f72c49ed45332efc22eaf963e42595bd",
+    "studio_version": "0.83.0"
   },
-  "tree_sha256": "1a208a4569c222fe1ca6fa60bb82b275975c2815fdbe469fbe8f098051a8cdb4"
+  "tree_sha256": "f6debe9bd12dfac43d6004f732b0e212f66ca3f4409fc64af11f923617d78281"
 }
