@@ -5,9 +5,9 @@ monorepo. Do not edit this distribution as a separate source of truth.
 
 - Source repository: https://github.com/mdrideout/junjo
 - Canonical source path: `apps/studio/deployments/vm-caddy`
-- Source commit: `2005b0ba76a4e390b3d685c35a0f04357f465f91`
-- Studio version: `0.84.1`
-- Compatible Junjo Python SDK version: `0.68.0`
+- Source commit: `1b5a79882124f1b854eb17720013ac35476d25d9`
+- Studio version: `0.85.0`
+- Compatible Junjo Python SDK version: `0.69.0`
 
 Propose source changes in the canonical monorepo. A validated Studio release
 publishes this distribution one way from that source.
