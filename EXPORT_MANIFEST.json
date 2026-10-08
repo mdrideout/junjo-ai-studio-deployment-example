@@ -3,8 +3,8 @@
     {
       "mode": "0644",
       "path": ".env.example",
-      "sha256": "58c42b933f85fd635ed449a9ace5cf7363c21ea62604674b8294c35d06d60229",
-      "size": 16039
+      "sha256": "698f41068f6c1d3217619e51cc89e5b2f5fbb167f6cc32e1ad30136ce3dee571",
+      "size": 13608
     },
     {
       "mode": "0644",
@@ -15,7 +15,7 @@
     {
       "mode": "0644",
       "path": "GENERATED_SOURCE.md",
-      "sha256": "7c93ea1f04fa18afb48baf8b67382c1b6f921f10f8c42124fb22f18f0b0bfe1c",
+      "sha256": "994d11c8d24a16132a8cbad4f156fd0eed107ae1ae49eebecf9a0b9563580271",
       "size": 571
     },
     {
@@ -27,14 +27,14 @@
     {
       "mode": "0644",
       "path": "README.md",
-      "sha256": "7661777fd0f16dee5f002bb66ed892ef4edd459814b4e030c09516eb7fd71342",
-      "size": 22807
+      "sha256": "dd033d4219e1c4f8a2479d4cdd577a5ecde2c3d3aab1f0025cac30df919cc2f4",
+      "size": 22001
     },
     {
       "mode": "0644",
       "path": "caddy/Caddyfile",
-      "sha256": "7375a7e0c1bf4d10a83603668e851a912a997402e9c66cf8770bd68e7d77138e",
-      "size": 2974
+      "sha256": "63894ddb041d43c110a90647249ecc3e753486d660e3da561646213eaf6f5e13",
+      "size": 2636
     },
     {
       "mode": "0644",
@@ -45,14 +45,14 @@
     {
       "mode": "0644",
       "path": "docker-compose.yml",
-      "sha256": "62740a0c9ca38674afcf808291ff55d9ebe6c1968ef059a214191edabba97c2b",
-      "size": 5393
+      "sha256": "e65ae345345cfb359a317dd4e544593b7abfe9e24790438a19bd692958fd49b7",
+      "size": 5002
     },
     {
       "mode": "0644",
       "path": "download_staging_certs.sh",
-      "sha256": "40e64196512424ff59bb288455356bf77bea63dadc91e14124ba3b647bb5f13e",
-      "size": 4029
+      "sha256": "7a2e313bfc1fc27c0517929a416aa53a909518c0b56cdae46cab097fb255528d",
+      "size": 3187
     },
     {
       "mode": "0644",
@@ -69,8 +69,8 @@
     {
       "mode": "0644",
       "path": "junjo_app/otel_config.py",
-      "sha256": "4df1eac45917cfe4a245cab3cb49baff1ec0472944e0f83b8fd914a1aa0bcb90",
-      "size": 2885
+      "sha256": "ad656efc3eb9e2769a00318fd92045ee48774cc83dab0433c3f5c8496e502362",
+      "size": 2887
     },
     {
       "mode": "0644",
@@ -81,8 +81,8 @@
     {
       "mode": "0755",
       "path": "scripts/junjo",
-      "sha256": "fbe26f31c8500f9b110c77e95ec7c26ffec83954c2f3a3c96db9c34da500ec15",
-      "size": 18851
+      "sha256": "72a01ba01ef19ebfdafc0c57443facd3fefb00ce47ba9e9a91a4b82d95b5e32e",
+      "size": 18690
     }
   ],
   "schema_version": 1,
@@ -92,8 +92,8 @@
     "distribution": "vm-caddy",
     "schema_version": 1,
     "source_repository": "https://github.com/mdrideout/junjo",
-    "source_revision": "1b5a79882124f1b854eb17720013ac35476d25d9",
-    "studio_version": "0.85.0"
+    "source_revision": "eac4423485d2b7ee04cebbcc91c269880b714e8b",
+    "studio_version": "0.86.0"
   },
-  "tree_sha256": "835c0e7f773ea6bebe75bc8bb61cfa182d2b59bf78359e35964f61819ade4cd4"
+  "tree_sha256": "b71cdf1c9b6e121b30be8a680793928af2da57693233c82ff1f339fa756890bb"
 }
